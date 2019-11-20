@@ -1,14 +1,34 @@
 #include <iostream>
 void view_board();
 bool gameover();
-void palayer_case(char player1,char player2);
+void player_case();
 char turn;
-char board[3][3]={{' ',' ',' '},{' ',' ',' '},{' ',' ',' '}};
-
+char board[3][3]={{'1','2','3'},{'4','5','6'},{'7','8','9'}};
+bool draw =false;
 
 using namespace std;
 int main(int argc, char** argv) {
-	view_board();
+	cout<<"Welcome To Tic-tac-toe game! Play with your way! "<<endl<<"If you find any problem, please contact john.nguyen@gameloft.com";
+	turn='X';
+	//
+	
+	while(!gameover()){
+		view_board();
+		player_case();
+		gameover();
+	}
+	if(turn=='O'&& !draw){
+		view_board();
+		cout<<endl<<endl<<endl<<"Play 1 Wins!\n";
+	}
+	else if (turn=='X' && !draw){
+		view_board();
+		cout<<endl<<endl<<endl<<"Play 2 Wins!\n";
+	}
+	else{
+		view_board();
+		cout<<endl<<endl<<endl<<"DRAW!\n";
+	}
 	return 0;
 }
 void view_board(){
@@ -29,10 +49,10 @@ void player_case(){
 	int choice;
 	int row=0,colum=0;
 	if(turn == 'X'){
-		cout<<"player1 case X : \n";
+		cout<<"player1 case X : ";
 	}
 	else if (turn =='O'){
-		cout<<"player2 case O : \n";
+		cout<<"player2 case O : ";
 	}
 	cin>>choice;
 	switch (choice){
@@ -71,14 +91,14 @@ bool gameover(){
 		 	return true;
 		 }
 	}
-//	//draw
-//	for (int i=0; i<3;i++){
-//		for(int j=0; j<3;j++){
-//			if (board[i][j]!='X'&& board[i][j] !='O'){
-//				return false;
-//			}
-//		}
-//	}
-//	draw true;
-//	return true;
+	//draw
+	for (int i=0; i<3;i++){
+		for(int j=0; j<3;j++){
+			if (board[i][j]!='X'&& board[i][j] !='O'){
+				return false;
+			}
+		}
+	}
+	draw =true;
+	return true;
 }
