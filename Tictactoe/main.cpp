@@ -1,7 +1,7 @@
 #include <iostream>
 void view_board();
 bool gameover();
-void player_case();
+void player_case(char player1, char player2);
 char turn;
 char board[3][3]={{'1','2','3'},{'4','5','6'},{'7','8','9'}};
 bool draw =false;
@@ -10,11 +10,16 @@ using namespace std;
 int main(int argc, char** argv) {
 	cout<<"Welcome To Tic-tac-toe game! Play with your way! "<<endl<<"If you find any problem, please contact john.nguyen@gameloft.com";
 	turn='X';
+	char player1,player2;
+	cout<<endl<<"input player1 name: ";
+	cin>>player1;
+	cout<<endl<<"input player2 name: ";
+	cin>>player2;
 	//
 	
 	while(!gameover()){
 		view_board();
-		player_case();
+		player_case(player1,player2);
 		gameover();
 	}
 	if(turn=='O'&& !draw){
@@ -45,14 +50,14 @@ void view_board(){
 	cout<<"  |     |     |     |"<< endl;
 	cout<<"  -------------------";
 }
-void player_case(){
+void player_case(char player1, char player2){
 	int choice;
 	int row=0,colum=0;
 	if(turn == 'X'){
-		cout<<"player1 case X : ";
+		cout<<player1<<" case X : ";
 	}
 	else if (turn =='O'){
-		cout<<"player2 case O : ";
+		cout<<player2<<" case O : ";
 	}
 	cin>>choice;
 	switch (choice){
@@ -67,7 +72,7 @@ void player_case(){
 		case 22: row=2; colum=2; break;
 		default:
 			cout<< "Try again\n";
-			player_case();
+			player_case(player1,player2);
 	}
 	if (turn=='X'&& board[row][colum]!= 'X'&&board[row][colum] !='O'){
 		board[row][colum]='X';
@@ -79,7 +84,7 @@ void player_case(){
 	}
 	else{
 		cout<<" try again\n";
-		player_case();
+		player_case(player1,player2);
 	}
 }
 bool gameover(){
@@ -87,7 +92,8 @@ bool gameover(){
 	for(int i=0;i<3;i++){
 		if((board[0][i]==board[1][i]&&board[1][i]==board[2][i])//corlum
 		 || (board[i][0]==board[i][1]&&board[i][1]==board[i][2])//row
-		 || ((board[i][i]==board[i+1][i+1]&&board[i+1][i+1]==board[i+2][i+2]))){//diagonal
+		 || (board[i][i]==board[i+1][i+1]&&board[i+1][i+1]==board[i+2][i+2])
+		 || (board[0][1]==board[1][1]&&board[1][1]==board[2][2])){//diagonal
 		 	return true;
 		 }
 	}
