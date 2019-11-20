@@ -20,5 +20,5 @@ void view_board(){
 	cout<<"  |     |     |     |"<< endl;
 	cout<<"  |  "<< board[2][0] <<"  |  "<< board[2][1] << "  |  "<< board[2][2]<<"  |"<< endl;
 	cout<<"  |     |     |     |"<< endl;
-	cout<<"  ___________________";
+	cout<<"  -------------------";
 }
