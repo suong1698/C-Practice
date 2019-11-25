@@ -18,7 +18,7 @@ int key;
 
 int main() {
 	vector<student> listsv;
-	
+	char data[100];
 	
 	do{
 		cout<<"...............MENU.................\n";
@@ -56,8 +56,17 @@ int main() {
 			}
 			case 4:
 			{
+				cout<<"ID        NAME        SCORE"<<endl;
 				ifstream fi;
 				fi.open("data.txt");
+				for(int i=0;i<=3;i++){
+					fi >> listsv[i].id;
+					fi>>listsv[i].name;
+					fi>>listsv[i].score;
+				}
+				for(int i=0;i<=3;i++){
+						cout<<listsv[i].id<<"        "<<listsv[i].name<<"        "<<listsv[i].score<<endl;
+				}
 				fi.close();
 				break;
 			}
