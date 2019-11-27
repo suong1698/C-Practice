@@ -1,0 +1,6 @@
+﻿  Main.cpp
+  Patent.cpp
+  Virus.cpp
+  Generating Code...
+E:\C-Practice\Virus_Patent\Virus_Patent\Virus.cpp(52,20): warning C4018: '<': signed/unsigned mismatch
+  Virus_Patent.vcxproj -> E:\C-Practice\Virus_Patent\Debug\Virus_Patent.exe
